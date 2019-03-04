@@ -1,6 +1,13 @@
 version: "3.7"
 
 services:
+  prometheus:
+    image: "studtool/prometheus:v0.0.1"
+    depends_on:
+      - profiles
+    ports:
+      - "${STUDTOOL_PROMETHEUS_PORT}:9090"
+
   profiles:
     image: "studtool/profiles:v0.0.1"
     depends_on:
