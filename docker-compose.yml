@@ -1,0 +1,14 @@
+version: "3.7"
+
+services:
+  profiles:
+    image: "studtool/profiles:v0.0.1"
+    depends_on:
+      - profiles-storage
+    environment:
+      - STUDTOOL_PROFILES_STORAGE_HOST=profiles-storage
+      - STUDTOOL_PROFILES_STORAGE_PORT=27017
+
+  profiles-storage:
+    image: "mongo:4.0.6"
+
