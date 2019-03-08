@@ -1,0 +1,6 @@
+apiVersion: ambassador/v1
+kind:  Mapping
+name:  profiles_v_0_0_1_mapping
+prefix: /api/v0.0.1/profiles
+rewrite: /api/v0.0.1/profiles
+service: profiles-v0.0.1:80
