@@ -1,0 +1,9 @@
+---
+apiVersion: ambassador/v1
+kind:  Mapping
+name:  timetable_v0_mapping
+prefix: /api/timetable
+headers:
+  x-api-version: v0
+rewrite: /api/timetable
+service: timetable-v0.1:80

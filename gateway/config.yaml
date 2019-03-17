@@ -1,3 +1,4 @@
+---
 apiVersion: ambassador/v1
 kind: Module
 name: studtool
