@@ -1,14 +1,9 @@
 global:
-  scrape_interval:     5s
-  evaluation_interval: 5s
+  scrape_interval:     10s
+  evaluation_interval: 10s
 
 scrape_configs:
-  - job_name: 'profiles-v0.1'
+  - job_name: studtool
     metrics_path: '/actuator/prometheus'
-    static_configs:
-    - targets: ['profiles-v0.1:80']
-
-  - job_name: 'timetable-v0.1'
-    metrics_path: '/actuator/prometheus'
-    static_configs:
-    - targets: ['timetable-v0.1:80']
+    consul_sd_configs:
+      - server: 'discovery:8500'
