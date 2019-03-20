@@ -8,7 +8,7 @@ services:
     ports:
       - ${STUDTOOL_CONSUL_PORT}:8500
 
-  auth-service-v0.1:
+  auth-service-v0.0.1:
     image: studtool/auth-service:v0.0.1
     depends_on:
       - auth-storage-v0.0.1
