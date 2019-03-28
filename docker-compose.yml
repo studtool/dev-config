@@ -12,7 +12,7 @@ services:
     image: studtool/auth-service:v0.0.1
     depends_on:
       - auth-storage-v0.0.1
-      - users-queue-v0.0.1
+      - users-queue
     environment:
       - STUDTOOL_AUTH_SERVICE_SHOULD_LOG_ENV_VARS=true
       - STUDTOOL_AUTH_SERVICE_PORT=80
@@ -24,7 +24,7 @@ services:
       - STUDTOOL_AUTH_STORAGE_SHOULD_INIT=true
       - STUDTOOL_AUTH_STORAGE_CONNECTION_NUM_RETRIES=5
       - STUDTOOL_AUTH_STORAGE_CONNECTION_RETRY_INTERVAL=2s
-      - STUDTOOL_USERS_MQ_HOST=users-queue-v0.0.1
+      - STUDTOOL_USERS_MQ_HOST=users-queue
       - STUDTOOL_USERS_MQ_PORT=5672
       - STUDTOOL_USERS_MQ_USER=${STUDTOOL_USERS_QUEUE_USER}
       - STUDTOOL_USERS_MQ_PASSWORD=${STUDTOOL_USERS_QUEUE_PASSWORD}
@@ -45,7 +45,7 @@ services:
       - POSTGRES_USER=${STUDTOOL_AUTH_STORAGE_USER}
       - POSTGRES_PASSWORD=${STUDTOOL_AUTH_STORAGE_PASSWORD}
 
-  users-queue-v0.0.1:
+  users-queue:
     image: rabbitmq:3.7-management
     environment:
       - RABBITMQ_DEFAULT_USER=${STUDTOOL_USERS_QUEUE_USER}
