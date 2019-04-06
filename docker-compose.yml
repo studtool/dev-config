@@ -6,7 +6,7 @@ services:
     depends_on:
       - auth-storage
     environment:
-      - STUDTOOL_AUTH_SERVICE_PORT=${STUDTOOL_AUTH_SERVICE_PORT}
+      - STUDTOOL_AUTH_SERVICE_PORT=80
       - STUDTOOL_JWT_KEY=${STUDTOOL_JWT_KEY}
       - STUDTOOL_AUTH_SERVICE_REPOSITORIES_ENABLED=true
       - STUDTOOL_AUTH_STORAGE_HOST=auth-storage
