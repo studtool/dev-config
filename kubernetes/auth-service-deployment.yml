@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: auth-service
+  labels:
+    app: nginx
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: auth-service
+  template:
+    metadata:
+      labels:
+        app: auth-service
+    spec:
+      containers:
+      - name: auth-service-v0
+        image: studtool/auth-service:v0.0.1
+        imagePullPolicy: Always
+        env:
+        - name: STUDTOOL_AUTH_SERVICE_PORT
+          value: "80"
+        - name: STUDTOOL_AUTH_SERVICE_SHOULD_ALLOW_CORS
+          value: "true"
+        - name: STUDTOOL_AUTH_SERVICE_SHOULD_LOG_REQUESTS
+          value: "true"
+        - name: STUDTOOL_AUTH_SERVICE_SHOULD_LOG_ENV_VARS
+          value: "true"
+        - name: STUDTOOL_JWT_KEY
+          valueFrom:
+            secretKeyRef:
+              name: auth-service-secret
+              key: jwt-key
+        - name: STUDTOOL_AUTH_SERVICE_SHOULD_ENABLE_REPOSITORIES
+          value: "false"
+        - name: STUDTOOL_AUTH_SERVICE_SHOULD_ENABLE_QUEUES
+          value: "false"
+        ports:
+        - containerPort: 80
+

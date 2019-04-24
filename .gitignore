@@ -1,3 +1,5 @@
-### dev ###
+### docker-compose ###
 .env
 
+### kubernetes ###
+*-secret.yml
