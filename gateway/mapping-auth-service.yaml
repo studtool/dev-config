@@ -1,0 +1,12 @@
+---
+apiVersion: ambassador/v1
+kind:  Mapping
+name:  auth_service_v0_mapping
+prefix: /api/v0/auth/
+rewrite: /api/auth/
+service: auth-service:80
+cors:
+  origins: "*"
+  methods: POST, GET, PATCH, DELETE, OPTIONS
+  headers: User-Agent, Content-Type, Content-Length, Authorization
+  credentials: false
