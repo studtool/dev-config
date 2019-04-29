@@ -2,7 +2,7 @@ version: "3.7"
 
 services:
   gateway:
-    image: quay.io/datawire/ambassador:0.60.1
+    image: quay.io/datawire/ambassador:0.60.2
     depends_on:
       - auth-service
       - users-service
