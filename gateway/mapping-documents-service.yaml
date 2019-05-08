@@ -2,8 +2,8 @@
 apiVersion: ambassador/v1
 kind:  Mapping
 name:  documents_service_v0_mapping
-prefix: /api/v0/documents/
-rewrite: /api/documents/
+prefix: /api/v0/documents
+rewrite: /api/documents
 service: documents-service:80
 cors:
   origins: "*"
