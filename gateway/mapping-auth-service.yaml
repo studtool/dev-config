@@ -4,7 +4,7 @@ kind:  Mapping
 name:  auth_service_v0_mapping
 prefix: /api/v0/auth/
 rewrite: /api/auth/
-service: auth-service:80
+service: auth-service-v0:80
 cors:
   origins: "*"
   methods: POST, GET, PATCH, DELETE, OPTIONS

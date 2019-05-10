@@ -1,9 +1,0 @@
-global:
-  scrape_interval:     10s
-  evaluation_interval: 10s
-
-scrape_configs:
-  - job_name: studtool
-    metrics_path: '/actuator/prometheus'
-    consul_sd_configs:
-      - server: 'discovery:8500'
