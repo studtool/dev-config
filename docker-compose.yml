@@ -67,7 +67,7 @@ services:
       - STUDTOOL_MQ_PASSWORD=${STUDTOOL_MQ_PASSWORD}
       - STUDTOOL_REGISTRATION_EMAIL_TEMPLATE_PATH=/tmp/templates/reg.txt
 
-  smtp-server:
+  smtp-server-v0:
     image: juanluisbaptiste/postfix
     environment:
       - SMTP_SERVER=studtool.ru
