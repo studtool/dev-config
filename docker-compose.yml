@@ -50,6 +50,7 @@ services:
   emails-service-v0:
     image: studtool/emails-service:v0.0.1
     depends_on:
+      - smtp-server
       - message-queue-v0
     volumes:
       - ./templates:/tmp/templates
