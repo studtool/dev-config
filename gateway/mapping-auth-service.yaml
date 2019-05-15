@@ -1,9 +1,22 @@
 ---
 apiVersion: ambassador/v1
 kind:  Mapping
-name:  auth_service_v0_mapping
-prefix: /api/v0/auth/
-rewrite: /api/auth/
+name:  auth_service_v0_public_mapping
+prefix: /api/v0/public/auth
+rewrite: /api/public/auth
+service: auth-service-v0:80
+bypass_auth: true
+cors:
+  origins: "*"
+  methods: POST, GET, PATCH, DELETE, OPTIONS
+  headers: User-Agent, Content-Type, Content-Length, Authorization
+  credentials: false
+---
+apiVersion: ambassador/v1
+kind:  Mapping
+name:  auth_service_v0_protected_mapping
+prefix: /api/v0/protected/auth
+rewrite: /api/protected/auth
 service: auth-service-v0:80
 cors:
   origins: "*"
