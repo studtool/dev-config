@@ -48,6 +48,17 @@ services:
   tokens-storage-v0:
     image: redis:5.0.4
 
+  users-management-service-v0:
+    image: studtool/users-management-service:v0.0.1
+    depends_on:
+      - message-queue-v0
+    environment:
+      - STUDTOOL_USERS_SERVICE_SHOULD_LOG_ENV_VARS=true
+      - STUDTOOL_MQ_HOST=${STUDTOOL_MQ_HOST}
+      - STUDTOOL_MQ_PORT=${STUDTOOL_MQ_PORT}
+      - STUDTOOL_MQ_USER=${STUDTOOL_MQ_USER}
+      - STUDTOOL_MQ_PASSWORD=${STUDTOOL_MQ_PASSWORD}
+
   emails-service-v0:
     image: studtool/emails-service:v0.0.1
     depends_on:
