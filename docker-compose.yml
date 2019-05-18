@@ -13,6 +13,16 @@ services:
     ports:
       - ${STUDTOOL_GATEWAY_PORT}:8080
 
+  monitor:
+    image: prom/prometheus:v2.9.2
+    depends_on:
+      - auth-service-v0
+      - users-service-v0
+    volumes:
+      - ./monitor:/etc/prometheus
+    ports:
+      - ${STUDTOOL_MONITOR_PORT}:9090
+
   auth-service-v0:
     image: studtool/auth-service:v0.0.1
     depends_on:
