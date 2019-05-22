@@ -1,0 +1,25 @@
+---
+apiVersion: ambassador/v1
+kind:  Mapping
+name:  documents_service_v0_public_mapping
+prefix: /api/v0/public/documents
+rewrite: /api/public/documents
+service: documents-service-v0:80
+bypass_auth: true
+cors:
+  origins: "*"
+  methods: POST, GET, PATCH, DELETE, OPTIONS
+  headers: User-Agent, Content-Type, Content-Length, Authorization
+  credentials: false
+---
+apiVersion: ambassador/v1
+kind:  Mapping
+name:  documents_service_v0_protected_mapping
+prefix: /api/v0/protected/documents
+rewrite: /api/protected/documents
+service: documents-service-v0:80
+cors:
+  origins: "*"
+  methods: POST, GET, PATCH, DELETE, OPTIONS
+  headers: User-Agent, Content-Type, Content-Length, Authorization
+  credentials: false
