@@ -6,6 +6,8 @@ services:
     depends_on:
       - auth-service-v0
       - emails-service-v0
+      - users-service-v0
+      - documents-service-v0
     volumes:
       - ./gateway:/ambassador/ambassador-config
     environment:
@@ -29,6 +31,8 @@ services:
     depends_on:
       - auth-service-v0
       - users-service-v0
+      - documents-service-v0
+      - documents-storage-v0-metrics-exporter
     volumes:
       - ./monitor:/etc/prometheus
     ports:
@@ -147,6 +151,8 @@ services:
 
   documents-storage-v0-metrics-exporter:
     image: prom/mysqld-exporter:v0.11.0
+    depends_on:
+      - documents-info-storage-v0
     environment:
       - DATA_SOURCE_NAME=${STUDTOOL_DOCUMENTS_STORAGE_EXPORTER_CONNECTION_STRING}
 
