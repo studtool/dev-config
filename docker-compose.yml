@@ -2,7 +2,7 @@ version: "3.7"
 
 services:
   gateway:
-    image: quay.io/datawire/ambassador:0.70.1
+    image: quay.io/datawire/ambassador:0.60.1
     depends_on:
       - auth-service-v0
       - emails-service-v0
@@ -144,6 +144,11 @@ services:
       - MYSQL_PASSWORD=${STUDTOOL_DOCUMENTS_INFO_STORAGE_PASSWORD}
       - MYSQL_DATABASE=${STUDTOOL_DOCUMENTS_INFO_STORAGE_NAME}
       - MYSQL_ALLOW_EMPTY_PASSWORD=true
+
+  documents-storage-v0-metrics-exporter:
+    image: prom/mysqld-exporter:v0.11.0
+    environment:
+      - DATA_SOURCE_NAME=${STUDTOOL_DOCUMENTS_STORAGE_EXPORTER_CONNECTION_STRING}
 
   message-queue-v0:
     image: rabbitmq:3.7-management
