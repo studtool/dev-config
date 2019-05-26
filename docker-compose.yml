@@ -13,6 +13,17 @@ services:
     ports:
       - ${STUDTOOL_GATEWAY_PORT}:8080
 
+  graphics:
+    image: grafana/grafana:v5.4.3
+    depends_on:
+      - monitor
+    environment:
+      - GF_SERVER_DOMAIN=${STUDTOOL_DOMAIN}
+      - GF_SERVER_ROOT_URL=${STUDTOOL_GRAPHICS_ROOT_URL}
+      - GF_SECURITY_ADMIN_PASSWORD=${STUDTOOL_GRAPHICS_PASSWORD}
+    ports:
+      - "${STUDTOOL_GRAPHICS_PORT}:3000"
+
   monitor:
     image: prom/prometheus:v2.9.2
     depends_on:
