@@ -4,3 +4,4 @@ scrape_configs:
       - targets:
         - auth-service-v0:80
         - users-service-v0:80
+        - documents-service-v0:80
