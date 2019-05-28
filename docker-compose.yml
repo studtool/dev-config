@@ -149,13 +149,6 @@ services:
       - MYSQL_DATABASE=${STUDTOOL_DOCUMENTS_INFO_STORAGE_NAME}
       - MYSQL_ALLOW_EMPTY_PASSWORD=true
 
-  documents-storage-v0-metrics-exporter:
-    image: prom/mysqld-exporter:v0.11.0
-    depends_on:
-      - documents-info-storage-v0
-    environment:
-      - DATA_SOURCE_NAME=${STUDTOOL_DOCUMENTS_STORAGE_EXPORTER_CONNECTION_STRING}
-
   message-queue-v0:
     image: rabbitmq:3.7-management
     environment:
