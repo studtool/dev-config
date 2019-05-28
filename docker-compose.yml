@@ -32,7 +32,6 @@ services:
       - auth-service-v0
       - users-service-v0
       - documents-service-v0
-      - documents-storage-v0-metrics-exporter
     volumes:
       - ./monitor:/etc/prometheus
     ports:
