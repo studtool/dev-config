@@ -3,7 +3,7 @@ apiVersion: ambassador/v1
 kind: AuthService
 name: authentication
 auth_service: auth-service-v0:80
-path_prefix: /api/private/auth/session
+path_prefix: /api/internal/auth/session
 proto: http
 allowed_authorization_headers:
   - X-User-Id
