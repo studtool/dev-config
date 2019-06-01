@@ -69,6 +69,7 @@ services:
       - STUDTOOL_MQ_PORT=${STUDTOOL_MQ_PORT}
       - STUDTOOL_MQ_USER=${STUDTOOL_MQ_USER}
       - STUDTOOL_MQ_PASSWORD=${STUDTOOL_MQ_PASSWORD}
+    restart: always
 
   auth-storage-v0:
     image: studtool/auth-storage:v0.0.1
@@ -91,6 +92,7 @@ services:
       - STUDTOOL_MQ_PORT=${STUDTOOL_MQ_PORT}
       - STUDTOOL_MQ_USER=${STUDTOOL_MQ_USER}
       - STUDTOOL_MQ_PASSWORD=${STUDTOOL_MQ_PASSWORD}
+    restart: always
 
   emails-service-v0:
     image: studtool/emails-service:v0.0.1
@@ -130,6 +132,7 @@ services:
       - STUDTOOL_MQ_PORT=${STUDTOOL_MQ_PORT}
       - STUDTOOL_MQ_USER=${STUDTOOL_MQ_USER}
       - STUDTOOL_MQ_PASSWORD=${STUDTOOL_MQ_PASSWORD}
+    restart: always
 
   users-storage-v0:
     image: mongo:4.1.11
@@ -153,6 +156,8 @@ services:
       - STUDTOOL_MQ_PORT=${STUDTOOL_MQ_PORT}
       - STUDTOOL_MQ_USER=${STUDTOOL_MQ_USER}
       - STUDTOOL_MQ_PASSWORD=${STUDTOOL_MQ_PASSWORD}
+    restart: always
+        
 
   documents-info-storage-v0:
     image: studtool/documents-info-storage:v0.0.1
