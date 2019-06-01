@@ -37,6 +37,15 @@ services:
     ports:
       - ${STUDTOOL_MONITOR_PORT}:9090
 
+  logs-storage:
+    image: sepb/elk:701
+    depends_on:
+      - auth-service-v0
+      - users-service-v0
+      - documents-service-v0
+    ports:
+      - "${LOGS_INTERFACE_PORT}:5601"
+
   auth-service-v0:
     image: studtool/auth-service:v0.0.1
     depends_on:
@@ -130,6 +139,7 @@ services:
     environment:
       - STUDTOOL_DOCUMENTS_SERVICE_SHOULD_LOG_ENV_VARS=true
       - STUDTOOL_DOCUMENTS_SERVICE_PORT=80
+      - STUDTOOL_LOGS_STORAGE_ADDRESS=logs-storage:5044
       - STUDTOOL_DOCUMENTS_INFO_STORAGE_HOST=${STUDTOOL_DOCUMENTS_INFO_STORAGE_HOST}
       - STUDTOOL_DOCUMENTS_INFO_STORAGE_PORT=${STUDTOOL_DOCUMENTS_INFO_STORAGE_PORT}
       - STUDTOOL_DOCUMENTS_INFO_STORAGE_NAME=${STUDTOOL_DOCUMENTS_INFO_STORAGE_NAME}
