@@ -3,7 +3,7 @@ apiVersion: ambassador/v1
 kind:  Mapping
 name:  users_service_v0_public_mapping
 prefix: /api/v0/public/users
-rewrite: /api/public/users
+rewrite: /api/v0/public/users
 service: users-service-v0:80
 bypass_auth: true
 cors:
@@ -16,7 +16,7 @@ apiVersion: ambassador/v1
 kind:  Mapping
 name:  users_service_v0_protected_mapping
 prefix: /api/v0/protected/users
-rewrite: /api/protected/users
+rewrite: /api/v0/protected/users
 service: users-service-v0:80
 cors:
   origins: "*"

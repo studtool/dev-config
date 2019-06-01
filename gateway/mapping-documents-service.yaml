@@ -3,7 +3,7 @@ apiVersion: ambassador/v1
 kind:  Mapping
 name:  documents_service_v0_public_mapping
 prefix: /api/v0/public/documents
-rewrite: /api/public/documents
+rewrite: /api/v0/public/documents
 service: documents-service-v0:80
 bypass_auth: true
 cors:
@@ -16,7 +16,7 @@ apiVersion: ambassador/v1
 kind:  Mapping
 name:  documents_service_v0_protected_mapping
 prefix: /api/v0/protected/documents
-rewrite: /api/protected/documents
+rewrite: /api/v0/protected/documents
 service: documents-service-v0:80
 cors:
   origins: "*"
