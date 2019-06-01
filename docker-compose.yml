@@ -39,6 +39,8 @@ services:
 
   logs-storage:
     image: sebp/elk:701
+    volumes:
+      - ./logs/logstash/02-beats-input.conf/:/etc/logstash/conf.d/02-beats-input.conf      
     ports:
       - "${LOGS_INTERFACE_PORT}:5601"
 
