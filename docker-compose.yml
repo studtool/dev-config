@@ -38,7 +38,7 @@ services:
       - ${STUDTOOL_MONITOR_PORT}:9090
 
   logs-storage:
-    image: sepb/elk:701
+    image: sebp/elk:701
     depends_on:
       - auth-service-v0
       - users-service-v0
