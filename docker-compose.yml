@@ -39,16 +39,13 @@ services:
 
   logs-storage:
     image: sebp/elk:701
-    depends_on:
-      - auth-service-v0
-      - users-service-v0
-      - documents-service-v0
     ports:
       - "${LOGS_INTERFACE_PORT}:5601"
 
   auth-service-v0:
     image: studtool/auth-service:v0.0.1
     depends_on:
+      - logs-storage
       - auth-storage-v0
       - message-queue-v0
     environment:
@@ -84,6 +81,7 @@ services:
   users-management-service-v0:
     image: studtool/users-management-service:v0.0.1
     depends_on:
+      - logs-storage
       - message-queue-v0
     environment:
       - STUDTOOL_USERS_SERVICE_SHOULD_LOG_ENV_VARS=true
@@ -95,6 +93,7 @@ services:
   emails-service-v0:
     image: studtool/emails-service:v0.0.1
     depends_on:
+      - logs-storage
       - message-queue-v0
     volumes:
       - ./templates:/tmp/templates
@@ -114,7 +113,9 @@ services:
   users-service-v0:
     image: studtool/users-service:v0.0.1
     depends_on:
+      - logs-storage
       - users-storage-v0
+      - message-queue-v0
     environment:
       - STUDTOOL_USERS_SERVICE_SHOULD_LOG_ENV_VARS=true
       - STUDTOOL_USERS_SERVICE_PORT=80
@@ -134,6 +135,7 @@ services:
   documents-service-v0:
     image: studtool/documents-service:v0.0.1
     depends_on:
+      - logs-storage
       - documents-info-storage-v0
       - message-queue-v0
     environment:
